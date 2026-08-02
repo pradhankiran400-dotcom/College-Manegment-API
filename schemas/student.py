@@ -1,14 +1,15 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 
-class Student_request(BaseModel):
+
+class StudentRequest(BaseModel):
+    name: str
+    age: int
+    branch: str
+
+class StudentResponse(BaseModel):
     id: int
     name: str
     age: int
     branch: str
 
-
-class Student_response(BaseModel):
-    name: str
-    age: int
-    branch: str
-
+    model_config = ConfigDict(from_attributes=True)
